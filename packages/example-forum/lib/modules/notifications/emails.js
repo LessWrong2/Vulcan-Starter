@@ -37,7 +37,7 @@ VulcanEmail.addEmails({
   
   newUser: {
     template: "newUser",
-    path: "/email/new-user/:_id?",
+    path: "/email/new-user/:documentId?",
     subject() {
       return "A new user has been created";
     },
@@ -53,7 +53,7 @@ VulcanEmail.addEmails({
 
   accountApproved: {
     template: "accountApproved",
-    path: "/email/account-approved/:_id?",
+    path: "/email/account-approved/:documentId?",
     subject() {
       return "Your account has been approved.";
     },
@@ -101,7 +101,7 @@ VulcanEmail.addEmails({
   
   newPost: {
     template: "newPost",
-    path: "/email/new-post/:_id?",
+    path: "/email/new-post/:documentId?",
     subject(data) {
       const post = _.isEmpty(data) ? dummyPost : data.PostsSingle;
       return post.user.displayName+' has created a new post: '+post.title;
@@ -111,7 +111,7 @@ VulcanEmail.addEmails({
   
   newPendingPost: {
     template: "newPendingPost",
-    path: "/email/new-pending-post/:_id?",
+    path: "/email/new-pending-post/:documentId?",
     subject(data) {
       const post = _.isEmpty(data) ? dummyPost : data.PostsSingle;
       return post.user.displayName+' has a new post pending approval: '+post.title;
@@ -121,7 +121,7 @@ VulcanEmail.addEmails({
   
   postApproved: {
     template: "postApproved",
-    path: "/email/post-approved/:_id?",
+    path: "/email/post-approved/:documentId?",
     subject(data) {
       const post = _.isEmpty(data) ? dummyPost : data.PostsSingle;
       return 'Your post “'+post.title+'” has been approved';
@@ -160,7 +160,7 @@ VulcanEmail.addEmails({
 
   newComment: {
     template: "newComment",
-    path: "/email/new-comment/:_id?",
+    path: "/email/new-comment/:documentId?",
     subject(data) {
       const comment = _.isEmpty(data) ? dummyComment : data.CommentsSingle;
       return comment.user.displayName+' left a new comment on your post "' + comment.post.title + '"';
@@ -170,7 +170,7 @@ VulcanEmail.addEmails({
 
   newReply: {
     template: "newReply",
-    path: "/email/new-reply/:_id?",
+    path: "/email/new-reply/:documentId?",
     subject(data) {
       const comment = _.isEmpty(data) ? dummyComment : data.CommentsSingle;
       return comment.user.displayName+' replied to your comment on "'+comment.post.title+'"';
@@ -180,7 +180,7 @@ VulcanEmail.addEmails({
 
   newCommentSubscribed: {
     template: "newComment",
-    path: "/email/new-comment-subscribed/:_id?",
+    path: "/email/new-comment-subscribed/:documentId?",
     subject(data) {
       const comment = _.isEmpty(data) ? dummyComment : data.CommentsSingle;
       return comment.user.displayName+' left a new comment on "' + comment.post.title + '"';
